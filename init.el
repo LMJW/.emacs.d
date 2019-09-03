@@ -22,7 +22,9 @@
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (magit org)))
+ '(package-selected-packages
+   (quote
+    (yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
