@@ -30,7 +30,13 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo")))))
 
+;; Wrap lines at 80 characters
+(setq-default fill-column 80)
+
+(require 'use-package)
+(setq use-package-verbose t)
+
 ;; my own customization
-;; set the magit keybinds
-(global-set-key (kbd "C-x g") 'magit-status)
-;; end setting magit keybinds
+(use-package magit
+  :ensure t
+  :bind (("C-x g" . magit-status)))
