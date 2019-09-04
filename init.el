@@ -24,7 +24,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
+    (yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -161,6 +161,21 @@
 ;; go-mode
 (use-package go-mode
   :ensure t)
+
+;; add language support: dockerfile
+;; dockerfile-mode
+(use-package dockerfile-mode
+  :ensure t
+  :config
+  (add-hook 'dockerfile-mode-hook #'dockerfile-mode))
+
+;; add language support for yaml
+;; yaml-mode
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-hook 'yml-mode-hook #'yaml-mode)
+  (add-hook 'yaml-mode-hook #'yaml-mode))
 
 (provide 'init)
 ;;; init.el ends here
