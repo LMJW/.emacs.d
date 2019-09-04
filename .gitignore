@@ -12,6 +12,8 @@ site-lisp/adventur-mode
 .DS_Store
 .yas-compiled-snippets.el
 .cask
+.cache/
+.lsp-session*
 /url/
 /var/
 /.sx/
