@@ -24,7 +24,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
+    (use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -36,7 +36,11 @@
 ;; Wrap lines at 80 characters
 (setq-default fill-column 80)
 
-(require 'use-package)
+;; install use-package if it is not installed
+(when (not (require 'use-package nil t))
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 (setq use-package-verbose t)
 
 ;; my own customization
