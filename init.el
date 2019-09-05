@@ -191,8 +191,19 @@
   (move-end-of-line nil)
   (newline-and-indent))
 
+;; custom function
+(defun insert-a-newline-above ()
+  "Insert a newline above the current line and put point at beginning."
+  (interactive)
+  (unless (bolp)
+    (beginning-of-line))
+  (newline)
+  (forward-line -1)
+  (indent-according-to-mode))
+
 ;; add key binding to editor
 (global-set-key (kbd "<C-return>") 'insert-a-newline-below)
+(global-set-key (kbd "C-o") 'insert-a-newline-above)
 ;;;
 
 (provide 'init)
