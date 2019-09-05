@@ -24,7 +24,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
+    (diff-hl yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -176,6 +176,10 @@
   :config
   (add-hook 'yml-mode-hook #'yaml-mode)
   (add-hook 'yaml-mode-hook #'yaml-mode))
+
+;; add package diff-hl for diff the change compare to last commit
+(use-package diff-hl
+  :ensure t)
 
 (provide 'init)
 ;;; init.el ends here
