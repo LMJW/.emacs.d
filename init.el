@@ -181,5 +181,18 @@
 (use-package diff-hl
   :ensure t)
 
+
+;;;
+;; custom funtions to help quickly navigate the document
+(defun insert-a-newline-below ()
+  "insert a newline below current line, indent the new line and move cursor to the begining of the line"
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+;; add key binding to editor
+(global-set-key (kbd "<C-return>") 'insert-a-newline-below)
+;;;
+
 (provide 'init)
 ;;; init.el ends here
