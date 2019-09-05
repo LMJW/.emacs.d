@@ -64,7 +64,8 @@
   :ensure t
   :config
   (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'c-mode-hook #'lsp))
+  (add-hook 'c-mode-hook #'lsp)
+  (add-hook 'before-save-hook #'lsp-format-buffer))
 
 ;; use lsp-ui
 (use-package lsp-ui
