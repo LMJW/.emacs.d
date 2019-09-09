@@ -195,7 +195,7 @@
 ;; anyway this is confusing
 ;; but it does what I need
 (add-hook 'c-mode-hook (lambda ()
-			 (flycheck-select-checker c/c++-gcc)))
+			 (flycheck-select-checker 'c/c++-gcc)))
 
 ;;;
 ;; custom funtions to help quickly navigate the document
