@@ -218,6 +218,7 @@
 ;; add key binding to editor
 (global-set-key (kbd "<C-return>") 'insert-a-newline-below)
 (global-set-key (kbd "C-o") 'insert-a-newline-above)
+(global-set-key (kbd "M-`") 'compile)
 ;;;
 
 (provide 'init)
