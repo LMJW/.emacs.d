@@ -1,4 +1,3 @@
-
 ;;; Code:
 
 
@@ -24,7 +23,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (diff-hl yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
+    (realgud-ipdb realgud-lldb realgud commenter python-mode diff-hl yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -35,6 +34,38 @@
 
 ;; Wrap lines at 80 characters
 (setq-default fill-column 80)
+
+;; Add display line number mode
+;; For the mode that does not want this line number to turn on
+;; we will disable this mode in that particular mode, for example the treemacs
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
+;; Add global hightlight line mode
+(global-hl-line-mode 1)
+;; copied the highlight face and replaced the :inverse-video to nil. To get the
+;; high-light info, use 'C-u C-x = ' will get the current information of buffer,
+;; including what face is being used at the moment. Not sure why the highlight
+;; line is green, but it seems ok to use.
+(defface my-highlight
+  '((((class color) (min-colors 88) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 88) (background dark))
+     :background "darkolivegreen")
+    (((class color) (min-colors 16) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 16) (background dark))
+     :background "darkolivegreen")
+    (((class color) (min-colors 8))
+     :background "green" :foreground "black")
+    (t :inverse-video nil))
+  "Basic face for highlighting."
+  :group 'basic-faces)
+;; inherit set the high-light color theme. Because the default theme inversed
+;; the colore, which replaced the syntex highlight. So I disabled the
+;; inverse-video.
+(set-face-attribute 'hl-line nil :inherit 'my-highlight)
+
 
 ;; install use-package if it is not installed
 (when (not (require 'use-package nil t))
@@ -183,6 +214,23 @@
 (use-package diff-hl
   :ensure t)
 
+;; add package realgud && realgud-lldb debug tools
+;; to use the debuggers within realgud, do:
+;;   "M-x load-library RET realgud"
+(use-package realgud
+  :ensure t)
+
+;; to use the realgud-lldb, we need to load library seperately:
+;;   "M-x load-library RET realgud-lldb"
+(use-package realgud-lldb
+  :ensure t)
+
+;; enable code execute in org mode
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((C . t)
+			     (python . t)))
+
+
 ;;;
 ;; custom funtions to help quickly navigate the document
 (defun insert-a-newline-below ()
@@ -200,6 +248,10 @@
   (newline)
   (forward-line -1)
   (indent-according-to-mode))
+
+
+
+
 
 ;; add key binding to editor
 (global-set-key (kbd "<C-return>") 'insert-a-newline-below)
