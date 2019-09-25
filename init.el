@@ -23,7 +23,7 @@
      ("melpa-stable" . "https://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (realgud-ipdb realgud-lldb realgud commenter python-mode diff-hl yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
+    (tide web-mode projectile company-web restclient prettier-js emmet-mode scss-mode react-snippets rjsx-mode realgud-ipdb realgud-lldb realgud commenter python-mode diff-hl yaml-mode dockerfile-mode use-package treemacs treemacs-icons-dired go-mode treemacs-magit yasnippet company-lsp lsp-ui lsp-mode exec-path-from-shell magit org)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -66,6 +66,13 @@
 ;; inverse-video.
 (set-face-attribute 'hl-line nil :inherit 'my-highlight)
 
+;; Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; example of how to load
+;; load the packaged named xyz.
+;; (load "xyz") ;; best not to include the ending “.el” or “.elc”
+
 
 ;; install use-package if it is not installed
 (when (not (require 'use-package nil t))
@@ -73,6 +80,9 @@
   (package-install 'use-package))
 
 (setq use-package-verbose t)
+
+;; show the matching paren
+(show-paren-mode 1)
 
 ;; my own customization
 (use-package magit
@@ -249,7 +259,9 @@
   (forward-line -1)
   (indent-according-to-mode))
 
-
+;; load mod web mode
+(load "~/.emacs.d/custom/web.el")
+;; end of web mode
 
 
 
