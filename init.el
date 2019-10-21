@@ -67,7 +67,7 @@
 (set-face-attribute 'hl-line nil :inherit 'my-highlight)
 
 ;; Tell emacs where is your personal elisp lib dir
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+;; (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; example of how to load
 ;; load the packaged named xyz.
@@ -260,10 +260,8 @@
   (indent-according-to-mode))
 
 ;; load mod web mode
-(load "~/.emacs.d/custom/web.el")
+;; (load "~/.emacs.d/custom/web.el")
 ;; end of web mode
-
-
 
 ;; add key binding to editor
 (global-set-key (kbd "<C-return>") 'insert-a-newline-below)
